@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8e8ee">
+  <meta name="description" content="Un pequeño mundo preparado con mucho cariño.">
+  <title>Un pequeño mundo para ti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <!-- Pantalla de bienvenida -->
+  <main id="welcomeScreen" class="welcome-screen">
+    <div class="welcome-card">
+      <div class="photo-strip" aria-label="Fotografías">
+        <img src="img/pareja-01.jpg" alt="Fotografía de ustedes" data-fallback="Foto 1">
+        <img src="img/pareja-02.jpg" alt="Fotografía de ustedes" data-fallback="Foto 2">
+        <img src="img/pareja-03.jpg" alt="Fotografía de ustedes" data-fallback="Foto 3">
+      </div>
+      <div class="welcome-content">
+        <span class="eyebrow">UN REGALO HECHO CON CARIÑO</span>
+        <h1>Un pequeño<br><em>mundo para ti</em></h1>
+        <div class="tiny-heart">♡</div>
+        <p class="welcome-letter">Aun tengo mucho que aprender sobre el amor, pero quiero aprenderlo contigo, aun tengo muchos defectos por corregir, pero quiero corrigerlos por nosotros dos, aun no alcanzo mi mejor versión, pero quiero que seas tú quein la disfrute, aún quedan muchas cosas por vivir, y quiero vivirlas contigo. Eres la forma más bonita que ha tenido la vida de enseñarme que vale la pena arriesgarse a amar. Te amo.</p>
+        <p class="date-line">13 de abril de 2026</p>
+        <button id="openGiftButton" class="primary-button">Abrir mi regalo <span>♡</span></button>
+        <p class="small-note">Un lugar lleno de recuerdos, canciones y pequeños detalles.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Aplicación -->
+  <div id="app" class="app-shell hidden">
+    <header class="topbar">
+      <button class="text-button" id="backToIndexTop" aria-label="Volver al índice">♡ <span>Mi pequeño mundo</span></button>
+      <div class="topbar-right">
+        <span id="progressLabel" class="progress-label">0 de 5 capítulos</span>
+        <button id="musicToggle" class="icon-button" aria-label="Mostrar u ocultar reproductor">♫</button>
+      </div>
+    </header>
+
+    <section id="indexScreen" class="index-screen">
+      <div class="book-shell">
+        <div class="book-spine"></div>
+        <div class="book-page">
+          <div class="index-heading">
+            <span class="eyebrow">NUESTRO PEQUEÑO UNIVERSO</span>
+            <h2>Un libro de<br><em>nosotros</em></h2>
+            <p>Elige por dónde quieres comenzar.</p>
+          </div>
+          <div class="index-grid">
+            <button class="index-item" data-open="story"><span class="index-number">01</span><span class="index-icon">♡</span><span class="index-name">Nuestra historia</span><span class="index-sub">Cómo comenzó todo</span></button>
+            <button class="index-item" data-open="letters"><span class="index-number">02</span><span class="index-icon">✉</span><span class="index-name">Cartas</span><span class="index-sub">Palabras para ti</span></button>
+            <button class="index-item" data-open="music"><span class="index-number">03</span><span class="index-icon">♫</span><span class="index-name">Nuestra banda sonora</span><span class="index-sub">Canciones y dedicatorias</span></button>
+            <button class="index-item" data-open="memories"><span class="index-number">04</span><span class="index-icon">▧</span><span class="index-name">Recuerdos y salidas</span><span class="index-sub">Momentos que guardo</span></button>
+            <button class="index-item" data-open="gifts"><span class="index-number">05</span><span class="index-icon">✿</span><span class="index-name">Regalos y detalles</span><span class="index-sub">Pequeñas cosas especiales</span></button>
+            <button class="index-item chest-index" data-open="chest"><span class="index-number">07</span><span class="index-icon">♧</span><span class="index-name">Cofre final</span><span class="index-sub" id="chestIndexStatus">Un último detalle</span></button>
+          </div>
+          <div class="page-footer"><span>Hecho especialmente para ti</span><span>♡</span></div>
+        </div>
+      </div>
+    </section>
+
+    <main id="sectionScreen" class="section-screen hidden">
+      <div class="section-toolbar">
+        <button class="back-button" id="backToIndex">← Índice</button>
+        <span class="section-counter" id="sectionCounter"></span>
+      </div>
+
+      <section id="storySection" class="content-section hidden">
+        <div class="section-intro">
+          <span class="eyebrow">CAPÍTULO 01</span>
+          <h2>Nuestra <em>historia</em></h2>
+          <p>Seis momentos que forman parte de algo muy bonito.</p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section id="lettersSection" class="content-section hidden">
+        <div class="section-intro blue-intro">
+          <span class="eyebrow">CAPÍTULO 02</span>
+          <h2>Cartas <em>para ti</em></h2>
+          <p>Abre cada sobre cuando quieras leer algo que escribí para ti.</p>
+        </div>
+        <div class="envelope-grid" id="envelopeGrid"></div>
+      </section>
+
+      <section id="musicSection" class="content-section hidden">
+        <div class="section-intro">
+          <span class="eyebrow">CAPÍTULO 03</span>
+          <h2>Nuestra banda <em>sonora</em></h2>
+          <p>Diez canciones, cuatro rincones y muchas cosas que me hacen pensar en ti.</p>
+        </div>
+        <div id="musicCollections" class="music-collections"></div>
+      </section>
+
+      <section id="memoriesSection" class="content-section hidden">
+        <div class="section-intro">
+          <span class="eyebrow">CAPÍTULO 04</span>
+          <h2>Recuerdos <em>y salidas</em></h2>
+          <p>Hay días que terminan, pero se quedan con nosotros.</p>
+        </div>
+        <article class="memory-feature">
+          <div class="memory-photo"><img src="img/pareja-07.jpg" alt="Recuerdos de nuestras salidas" data-fallback="Nuestros recuerdos"></div>
+          <div class="memory-copy">
+            <span class="eyebrow">UN ÁLBUM DE NOSOTROS</span>
+            <p>Cada salida contigo se convierte en una experiencia unica y especial. Me gusta recordar los lugares que hemos visitado y todos los momentos que compartimos en ellos... Me acuerdo de esa primera salida, ese primer beshito tan hermoso, tan inesperado, pero si, definitivamente unico, y es algo de lo que no creo olvidarme.</p>
+            <p>Hemos ido a varios lugares juntos, como a esos parques de noche, al mall, salimos a comer, a pasear, pero todos esas salidas dejan recuerdos muy lindos sabes, y siempre regreso muy contento a mi casa de poder haber salido contigo y pasar un dia tan bonito.</p>
+            <p>Creo que coincidire contigo al decir que la mejor salida fue a la del parque de la amistad, por ese bonito detalle, y salio todo como esperaba, algo hermoso y unico, lleno de risas y amor. Disfruto cada momento que salgo contigo, apartando las veces que voy a tu casa, yo creo que salir contigo es mucho más de risas y momentos lindos.</p>
+            <p>Me encantaria volver a vivir contigo esa vez que salimos al mall en halloween, fue un dia en parte normal, pero muy bonito por todo lo paso. Tambien esa vez que habiamos peleado y intente solucionar contigo saliendo al parque, empezo un poco triste el dia, pero gracias a ti puedo sonreir hasta en esos dias malos.</p>
+            <p>Esas risas, esas conversaciones que tenemos siempre que salimos son muy bonitas y todas las recuerdo con una cancion de amor en fondo de mi cabeza, y siempre que las pienso me sale una sonrisa. Me encanta salir contigo porque se que termina en "Te etiqueto en una historia" o siempre nos reimos y pasamos un dia que deseariamos volver a repetir.</p>
+            <p>Me gusta conservar esos recuerdos tan especiales, porque para mi tienen mucho valor, nunca antes habia vivido cosas tan lindas con otras personas, siempre regreso tarde, pero con una sonrisa, y para mi eso es lo que vale, porque todo lo que vivimos el dia anterior, no lo puedo dejar de pensar durante el resto del dia.</p>
+          </div>
+        </article>
+        <div class="photo-album">
+          <h3>Algunos momentos que guardo</h3>
+          <div class="photo-grid memory-photo-grid">
+            <figure><img src="img/pareja-08.jpg" alt="Un recuerdo juntos"><figcaption>Un momento bonito</figcaption></figure>
+            <figure><img src="img/pareja-09.jpg" alt="Otro recuerdo juntos"><figcaption>De esos días especiales</figcaption></figure>
+            <figure><img src="img/pareja-10.jpg" alt="Un recuerdo de ustedes"><figcaption>Contigo</figcaption></figure>
+            <figure><img src="img/anillo.jpg" alt="El anillo"><figcaption>El día del anillo</figcaption></figure>
+            <figure><img src="img/ella-bebe.jpg" alt="Una fotografía de cuando era pequeña"><figcaption>Una pequeña tú</figcaption></figure>
+            <figure><img src="img/minecraft.jpg" alt="Ustedes jugando Minecraft"><figcaption>Nuestras aventuras</figcaption></figure>
+            <figure><img src="img/roblox.jpg" alt="Ustedes jugando Roblox"><figcaption>Y también en Roblox</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="giftsSection" class="content-section hidden">
+        <div class="section-intro">
+          <span class="eyebrow">CAPÍTULO 05</span>
+          <h2>Regalos <em>y detalles</em></h2>
+          <p>No se trata del tamaño del regalo, sino de todo lo que significa.</p>
+        </div>
+        <div class="gift-display" id="giftDisplay"></div>
+      </section>
+<section id="chestSection" class="content-section hidden">
+        <div class="section-intro blue-intro">
+          <span class="eyebrow">EL ÚLTIMO CAPÍTULO</span>
+          <h2>Un cofre <em>para ti</em></h2>
+          <p id="chestIntro">Un último detalle espera por ti.</p>
+        </div>
+        <div id="lockedChest" class="chest-area">
+          <div class="lock-illustration">♧</div>
+          <div class="code-panel">
+            <p id="chestLockMessage">Este cofre guarda algo especial. Primero completa los capítulos anteriores.</p>
+            <label for="chestCode">Código del cofre</label>
+            <div class="code-guide" aria-hidden="true">DD - MM - AA</div>
+            <input id="chestCode" type="text" inputmode="numeric" maxlength="8" placeholder="DD-MM-AA" autocomplete="off" aria-label="Código con formato día, mes y año">
+            <button id="unlockChest" class="primary-button">Abrir cofre</button>
+            <p id="chestError" class="error-message" aria-live="polite"></p>
+          </div>
+        </div>
+        <div id="openedChest" class="opened-chest hidden">
+          <div class="chest-open-icon">♡</div>
+          <h3>Esto es para ti</h3>
+          <div class="final-photo"><img src="img/pareja-10.jpg" alt="Una fotografía especial de ustedes" data-fallback="Nuestra foto"></div>
+          <article class="final-letter">
+            <span class="eyebrow">UNA ÚLTIMA CARTA</span>
+            <p>Mi amor, definitivamente no hay palabras con las que yo pueda expresar todo lo que siento por ti, de que sirve escribirte todo esto? Si no es ni una miga de lo que siento por ti mi vida.</p>
+            <p>Espero que este sea. Solo el comienzo y que nunca tenga un final, lo de nosotros es algo tan único y hermoso que no puedo dejar de imaginarme todo el futuro que tenemos por adelante.</p>
+            <p>Este regalo realmente lo prepare porque si, no tenía un motivo muy claro, solo me nació darte algo muy grande y bonito que pudieras recordar con mucho amor y demostrarte de nuevo porque eres la mujer de mis sueños.</p>
+            </article>
+          <aside class="promise-card">
+            <span class="eyebrow">MI PROMESA PARA TI</span>
+            <p>Pero bueno, lo más importante que te quería decir es que yo aquí en esta carta te prometo con todo mi corazón que pase lo que pase nunca dejare de amarte, porque esa fue la primera cosa que te prometí desde esa primera vez que lloraste por mi, yo me comprometi a cuidarte, amarte y protegerte en todo momento y hacerte la mujer más feliz del mundo, por eso quiero darte todo lo que este a mi alcanze por hacerte sentir querida. Te amo  un mundo mi niña beia.</p>
+          </aside>
+        </div>
+      </section>
+
+      <div class="chapter-footer">
+        <p id="chapterFinishHint">Cuando termines de explorar este capítulo, puedes marcarlo como terminado.</p>
+        <button id="finishChapter" class="finish-button">Terminar este capítulo ✓</button>
+      </div>
+    </main>
+
+    <footer class="site-footer"><span>Hecho con cariño, detalle por detalle</span><span>♡</span></footer>
+  </div>
+
+  <!-- Reproductor persistente -->
+  <aside id="audioPlayer" class="audio-player hidden" aria-label="Reproductor de música">
+    <img id="playerCover" src="img/portada-reproductor.jpg" alt="Portada de canción" data-fallback="♫">
+    <div class="player-meta"><strong id="playerTitle">Amor de siempre</strong><span id="playerArtist">Cuco</span><div class="player-progress"><span id="playerProgress"></span></div></div>
+    <button id="playerPlay" class="player-control" aria-label="Reproducir o pausar">▶</button>
+    <button id="playerClose" class="player-close" aria-label="Ocultar reproductor">×</button>
+  </aside>
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <!-- Ventanas emergentes -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Cerrar">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
