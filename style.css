@@ -407,3 +407,13 @@ body:has(#chestSection:not(.hidden)) .ambient-one {
 body:has(#chestSection:not(.hidden)) .ambient-two {
   background: #b9dcf3;
 }
+
+/* Ocultar elementos que tengan la clase hidden */
+.hidden {
+  display: none !important;
+}
+
+/* Mostrar el reproductor cuando se active */
+.audio-player.visible {
+  display: flex !important;
+}

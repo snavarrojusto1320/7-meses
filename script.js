@@ -281,7 +281,14 @@ function playSong(song) {
 }
 audio.addEventListener("play", () => $("#playerPlay").textContent = "Ⅱ");
 audio.addEventListener("pause", () => $("#playerPlay").textContent = "▶");
-audio.addEventListener("error", () => { if (currentSong) showToast(`No se encontró o no se pudo leer: ${currentSong.file}`, 4200); });
+
+audio.addEventListener("error", () => {
+  console.log("Error de audio:", audio.error?.code, audio.error?.message);
+  if (currentSong) {
+    showToast(`Error ${audio.error?.code}: ${currentSong.file}`, 4200);
+  }
+});
+
 audio.addEventListener("timeupdate", () => {
   const percent = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
   $("#playerProgress").style.width = `${percent}%`;
