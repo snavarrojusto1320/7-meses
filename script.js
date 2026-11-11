@@ -267,7 +267,10 @@ function playSong(song) {
   audio.load();
   $("#playerTitle").textContent = song.title;
   $("#playerArtist").textContent = song.artist;
-  $("#playerCover").src = song.cover || "img/portada-reproductor.jpg";
+ const playerCover = $("#playerCover");
+if (playerCover) {
+  playerCover.src = song.cover || "img/cancion-amor-de-siempre.jpg";
+}
   $("#audioPlayer").classList.remove("hidden");
   $("#audioPlayer").classList.add("visible");
   const attempt = audio.play();
