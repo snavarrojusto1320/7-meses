@@ -417,3 +417,23 @@ body:has(#chestSection:not(.hidden)) .ambient-two {
 .audio-player.visible {
   display: flex !important;
 }
+
+.song-dedication-button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 9px;
+  border: 1px solid #e8b8cb;
+  border-radius: 12px;
+  background: #fff0f5;
+  color: #a34f72;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.song-dedication-button:hover {
+  background: #f9dce8;
+  transform: translateY(-2px);
+}
